@@ -159,7 +159,7 @@ function CheckList({ dataType, title }) {
               </div>
             ))}
           </div>
-          <div className="mt-5 rounded-lg">
+          <div className="mt-5 rounded-lg ml-2">
             <HighchartsReact highcharts={Highcharts} options={options} />
           </div>
         </div>

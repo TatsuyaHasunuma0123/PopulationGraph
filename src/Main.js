@@ -11,10 +11,10 @@ function CheckList({ dataType, title }) {
   const [selected, setSelected] = useState(Array(47).fill(false)); //選択されているチェックボックスのデータ
   const [series, setSeries] = useState([]); //都道府県のデータ及び、人口推移のデータ
   const [responses, setResponse] = useState([]); //チェックボックスをチェックした時に得られたレスポンスを保持しておく
-  const apikey = process.env.REACT_APP_RESAS_KEY;
 
   // チェックボックスに表示する都道府県を読み込む
   useEffect(() => {
+    const apikey = process.env.REACT_APP_RESAS_KEY;
     fetch(prefectures_URL, {
       headers: { "X-API-KEY": apikey },
     })
@@ -60,6 +60,7 @@ function CheckList({ dataType, title }) {
   }, [titleChange_Next]);
 
   const changeSelection = (index) => {
+    const apikey = process.env.REACT_APP_RESAS_KEY;
     const selected_copy = selected.slice();
     selected_copy[index] = !selected_copy[index];
 

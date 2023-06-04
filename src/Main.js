@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Highcharts from "highcharts";
 import HighchartsReact from "highcharts-react-official";
-import { wait } from "@testing-library/user-event/dist/utils";
 
 const prefectures_URL =
   "https://opendata.resas-portal.go.jp/api/v1/prefectures";
@@ -92,7 +91,7 @@ function CheckList({ dataType, title }) {
       const series_copy = series.slice();
       // チェック済みであった場合
       for (let i = 0; i < series_copy.length; i++) {
-        if (series_copy[i].name == prefs[index].prefName) {
+        if (series_copy[i].name === prefs[index].prefName) {
           series_copy.splice(i, 1);
         }
       }

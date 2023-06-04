@@ -30,6 +30,7 @@ function CheckList({ dataType, title }) {
   //データタイプが
   useEffect(() => {
     setSeries([]);
+
     setTitleChange_Next(titleChange_Next + 1);
   }, [dataType]);
 
@@ -137,7 +138,7 @@ function CheckList({ dataType, title }) {
         <h1 className="font-medium text-xl text-center">Loading...</h1>
       ) : (
         <div className="flex flex-col w-11/12">
-          <div className="grid grid-cols-1 mt-5 rounded-lg gap-5 bg-white p-6 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] lg:grid-cols-8  md:grid-cols-5 dark:bg-neutral-700">
+          <div className="grid grid-cols-3 mt-5 rounded-lg gap-1 bg-white p-6 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] lg:grid-cols-8  md:grid-cols-5 dark:bg-neutral-700">
             {prefs.map((pref) => (
               <div key={pref.prefCode} className="items-center pl-3 flex">
                 <input
@@ -151,7 +152,7 @@ function CheckList({ dataType, title }) {
                 ></input>
                 <label
                   htmlFor={pref.prefCode}
-                  className="py-3 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300 hover:text-gray-600 hover:underline hover:duration-100"
+                  className="lg:py-3 md:py-1 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300 hover:text-gray-600 hover:underline hover:duration-100"
                 >
                   {pref.prefName}
                 </label>

@@ -1,19 +1,19 @@
-const apikey = process.env.REACT_APP_RESAS_KEY;
+import axios, { AxiosError, AxiosResponse } from "axios";
+import { Prefecture, PrefectureAPIResponse } from "../populationtrend.type";
+import { getPrefecturesOptions } from "../populationtrend.constant";
 
-export const fetchPrefecturesOnMount = async (setPrefecture, setIsLoading) => {
-  const prefectures_URL =
-    "https://opendata.resas-portal.go.jp/api/v1/prefectures";
-
-  try {
-    const response = await fetch(prefectures_URL, {
-      headers: { "X-API-KEY": apikey },
+export const fetchPrefecturesOnMount = async (
+  setPrefecture: React.Dispatch<React.SetStateAction<Prefecture[]>>,
+  setIsLoading: React.Dispatch<React.SetStateAction<boolean>>
+) => {
+  setIsLoading(true);
+  axios(getPrefecturesOptions)
+    .then((res: AxiosResponse<PrefectureAPIResponse>) => {
+      const { data } = res;
+      setPrefecture(data.result);
+      setIsLoading(false);
+    })
+    .catch((e: AxiosError<{ error: string }>) => {
+      console.log(e.message);
     });
-    const data = await response.json();
-    setPrefecture(data.result);
-  } catch (error) {
-    console.error("Error fetching data : ", error);
-    throw error;
-  } finally {
-    setIsLoading(false);
-  }
 };

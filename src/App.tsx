@@ -1,10 +1,13 @@
-import CheckBox from "./components/ui/checkbox/CheckBox";
+import { RecoilRoot } from "recoil";
+import PopulationTrendContainer from "./components/features/populationtrend/container/PopulationTrendContainer";
+import NavBarContainer from "./components/features/populationtrend/container/NavBarContainer";
 
 function App() {
   return (
-    <>
-      <CheckBox labelName="aaaa" />
-    </>
+    <RecoilRoot>
+      <NavBarContainer />
+      <PopulationTrendContainer />
+    </RecoilRoot>
   );
 }
 
